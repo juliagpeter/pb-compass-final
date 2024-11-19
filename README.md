@@ -1,5 +1,4 @@
 # Programa de bolsa: Software Quality Engineer
-# Compass Uol
 
 ![bannerCompass](./assets/compassBanner.png)
 
