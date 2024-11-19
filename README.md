@@ -1,6 +1,8 @@
+![bannerCompass](./assets/compassBanner.png)
+
 # Programa de bolsa: Software Quality Engineer
 
-![bannerCompass](./assets/compassBanner.png)
+Challenge final utilizando a API NestJS Cinema
 
 ## 📦 Instalação
 
