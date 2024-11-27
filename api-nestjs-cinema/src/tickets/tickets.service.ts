@@ -28,11 +28,11 @@ export class TicketsService {
     return new Promise((resolve, reject) => {
       this.dbService.getTicketDatastore().findOne({ id }, (err, doc) => {
         if (err) reject(err);
-        else if (!doc) reject(new NotFoundException(`Ticket with ID ${id} not found.`));
-        else resolve(doc);
+        if (!doc) throw new NotFoundException(`Ticket with ID ${id} not found.`);
+        resolve(doc);
       });
     });
-  }  
+  }
 
   async update(id: string, ticket: Ticket): Promise<Ticket> {
     return new Promise((resolve, reject) => {
