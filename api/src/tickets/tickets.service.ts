@@ -26,9 +26,10 @@ export class TicketsService {
 
   async findOne(id: string): Promise<Ticket> {
     return new Promise((resolve, reject) => {
-      this.dbService.getTicketDatastore().findOne({ id }, (err, doc) => {
+      this.dbService.getTicketDatastore().findOne({ _id: id }, (err, doc) => {
         if (err) reject(err);
-        if (!doc) throw new NotFoundException(`Ticket with ID ${id} not found.`);
+        if (!doc) 
+          throw new NotFoundException(`Ticket with ID ${id} not found.`);
         resolve(doc);
       });
     });
@@ -36,7 +37,7 @@ export class TicketsService {
 
   async update(id: string, ticket: Ticket): Promise<Ticket> {
     return new Promise((resolve, reject) => {
-      this.dbService.getTicketDatastore().update({ id }, ticket, {}, (err, numReplaced) => {
+      this.dbService.getTicketDatastore().update({ _id: id }, ticket, {}, (err, numReplaced) => {
         if (err) reject(err);
         if (numReplaced === 0) throw new NotFoundException(`Ticket with ID ${id} not found.`);
         resolve(ticket);
@@ -46,7 +47,7 @@ export class TicketsService {
 
   async remove(id: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.dbService.getTicketDatastore().remove({ id }, {}, (err, numRemoved) => {
+      this.dbService.getTicketDatastore().remove({ _id: id }, {}, (err, numRemoved) => {
         if (err) reject(err);
         if (numRemoved === 0) throw new NotFoundException(`Ticket with ID ${id} not found.`);
         resolve();
