@@ -17,11 +17,16 @@ test.describe('Cinema API Tests - Validando GET /movies', () => {
 
     if (!Array.isArray(body) || body.length === 0) {
       console.warn('⚠️ Corpo da resposta não é uma lista ou está vazio.');
-    } else {
-      console.log(`✅ Filmes encontrados: ${body.length}`);
+      return;
     }
 
-    // Valida estrutura de cada filme na lista
+    console.log(`✅ Filmes encontrados: ${body.length}`);
+
+    // Variáveis para o resumo
+    let filmesValidados = 0;
+    const erros = [];
+
+    // valida estrura for each filme
     body.forEach((movie, index) => {
       try {
         expect(movie).toHaveProperty('title');
@@ -36,10 +41,18 @@ test.describe('Cinema API Tests - Validando GET /movies', () => {
         expect(Array.isArray(movie.showtimes)).toBe(true);
         expect(typeof movie._id).toBe('string');
 
-        console.log(`✅ Filme ${index + 1} validado com sucesso:`, movie.title);
+        filmesValidados++;
       } catch (validationError) {
-        console.warn(`⚠️ Estrutura inválida no filme ${index + 1}:`, validationError.message);
+        erros.push(`Filme ${index + 1} inválido: ${validationError.message}`);
       }
     });
+
+    // log final
+    console.log(`✅ ${filmesValidados} filmes validados com sucesso.`);
+    if (erros.length > 0) {
+      console.warn(`⚠️ ${erros.length} filmes apresentaram problemas:\n- ${erros.join('\n- ')}`);
+    } else {
+      console.log('✅ Todos os filmes passaram na validação.');
+    }
   });
 });
