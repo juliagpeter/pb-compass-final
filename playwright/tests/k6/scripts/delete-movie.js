@@ -12,12 +12,12 @@ export const options = {
     scenarios: {
         delete_movies: {
             executor: 'constant-arrival-rate',
-            rate: 60, 
+            maxVUs: 100, 
             timeUnit: '1s',
             duration: '1s',  
             preAllocatedVUs: 0,
-            maxVUs: 60,
-            exec: 'delete_movie',
+            rate: 100, 
+            exec: 'delete_movie', 
         }
     }
 };
@@ -47,8 +47,8 @@ export function delete_movie(setupData) {
     const res = http.del(`${baseUrl}/${movieId}`);
 
     check(res, {
-        'Exclusão de filme com sucesso': (r) => r.status === 200,
-        'Tempo de resposta em menos de 400 milissegundos': (r) => r.timings.duration < 400,
+        'DELETE concluÍdo': (r) => r.status === 200,
+        'Tempo de resposta menor que 400ms': (r) => r.timings.duration < 400,
     });
 
 }
