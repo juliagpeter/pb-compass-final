@@ -4,7 +4,7 @@ test.describe('Cinema API Tests - Validando GET /tickets', () => {
   test('GET /tickets - Valida lista de tickets e estrutura do corpo', async ({ request }) => {
     const response = await request.get(`tickets`);
 
-    // Verifica o código de status
+    // check 200
     expect(response.status()).toBe(200);
 
     let body;
@@ -22,11 +22,10 @@ test.describe('Cinema API Tests - Validando GET /tickets', () => {
 
     console.log(`✅ Tickets encontrados: ${body.length}`);
 
-    // Variáveis para o resumo
     let ticketsValidados = 0;
     const erros = [];
 
-    // Valida a estrutura de cada ticket
+    // check estrutura
     body.forEach((ticket, index) => {
       try {
         expect(ticket).toHaveProperty('movieId');
@@ -49,7 +48,6 @@ test.describe('Cinema API Tests - Validando GET /tickets', () => {
       }
     });
 
-    // Log final
     console.log(`✅ ${ticketsValidados} tickets validados com sucesso.`);
     if (erros.length > 0) {
       console.warn(`⚠️ ${erros.length} tickets apresentaram problemas:\n- ${erros.join('\n- ')}`);
