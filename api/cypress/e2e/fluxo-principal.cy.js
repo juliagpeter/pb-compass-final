@@ -6,12 +6,11 @@ describe('template spec', () => {
 const { faker } = require('@faker-js/faker');
 
 describe('nestjs-cinema - Fluxo Completo', () => {
-  const apiBaseUrl = 'http://localhost:3000'; // Ajuste para o endpoint correto da API
+  const apiBaseUrl = 'http://localhost:3000';
 
   it('Criação, Edição e Exclusão de Filmes e Tickets', () => {
     const currentDate = new Date().toISOString().split('T')[0];
 
-    // 1. Gera os dados do filme
     const filme = {
       title: faker.word.words(2),
       description: faker.lorem.sentence(),
