@@ -1,7 +1,0 @@
-✅ Filme criado com sucesso
-{
-  title: 'absum amissio ambulo',
-  description: 'Nam desidero viduo vel adhaero cumque vesco.',
-  launchdate: 'data-invalida',
-  showtimes: [ 'horario-invalido', 'outra-hora-invalida' ]
-}

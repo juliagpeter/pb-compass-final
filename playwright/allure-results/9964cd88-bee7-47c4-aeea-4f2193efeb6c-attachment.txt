@@ -1,4 +1,0 @@
-✅ Filme criado com sucesso.
-✅ Filme encontrado na lista: universe spectaculum comprehendo comptus (ID: xf2LwL1rMGLG6W4b)
-✅ Filme excluído com sucesso: universe spectaculum comprehendo comptus
-✅ Confirmação de que o filme foi removido: ID xf2LwL1rMGLG6W4b
