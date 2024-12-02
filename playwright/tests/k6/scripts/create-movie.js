@@ -12,12 +12,12 @@ export const options = {
     scenarios: {
         create_movies: {
             executor: 'constant-arrival-rate',
-            rate: 200,
+            maxVUs: 100, 
             timeUnit: '1s',
-            duration: '1s',
+            duration: '1s',  
             preAllocatedVUs: 0,
-            maxVUs: 200,
-            exec: 'create_movie',
+            rate: 100, 
+            exec: 'create_movie', 
         }
     }
 };
@@ -62,8 +62,8 @@ export function create_movie(setupData) {
     const res = http.post(baseUrl, payload, params);
     
     check(res, {
-        'Criação de filme com sucesso': (r) => r.status === 201,
-        'Tempo de resposta em menos de 200 milissegundos': (r) => r.timings.duration < 200,
+        'POST de filme': (r) => r.status === 201,
+        'Tempo de resposta menor que 200ms': (r) => r.timings.duration < 200,
     });
 
 }
