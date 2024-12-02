@@ -1,10 +1,20 @@
-![bannerCompass](./assets/compassBanner.png)
+<div align="center">
+  <img src="./assets/compassBanner.png" alt="Logo" width="100%">
+  <h1>Programa de Bolsa: Software Quality Engineer</h1>
+</div>
 
-# Programa de Bolsa: Software Quality Engineer
+## 📝 Sobre o Projeto
 
-Desafio final do programa de bolsa Software Quality Engineer da Compass UOL utilizando a API [nestjs-cinema](https://github.com/juniorschmitz/nestjs-cinema/tree/main).
+Este projeto é uma suíte de testes de Qualidade para a API [nestjs-cinema](https://github.com/juniorschmitz/nestjs-cinema/tree/main), desenvolvida como challenge final do Programa de Bolsas Software Quality Engineer da Compass UOL na área de QA.
 
----
+## 👤 Autora
+
+### Olá, eu sou a Júlia Peter! 👋
+
+Estudante de 20 anos do quarto semestre do curso Técnologo em Sistemas para Internet no campus Pelotas no Instituto Federal Sul-riograndense e participante do programa de bolsas de Software Quality Engineer na Compass UOL.
+- 😄 Pronomes: she/her
+- 📫 Contato: juliagpeter0@gmail.com
+
 
 ## 📦 Instalação
 
@@ -17,7 +27,7 @@ Antes de começar, você precisará de algumas ferramentas instaladas em sua má
 - [Postman](https://www.postman.com/) — para realizar testes manuais.
 - [K6](https://k6.io/) — para realizar testes de desempenho.
 
-### Passo a Passo
+### 📝 Passo a Passo
 
 Siga as etapas abaixo para configurar o projeto e iniciar o servidor.
 
@@ -64,6 +74,13 @@ Siga as etapas abaixo para configurar o projeto e iniciar o servidor.
 
 Coleção de testes manuais no Postman está disponivel [aqui](postman/Cinema.postman_collection.json)
 
+Baixe o arquivo e importe dentro do aplicativo do Postman:
+
+![postman1](assets/postman1.png)
+
+![postman2](assets/postman2.png)
+
+Teste as rotas de maneira manual.
 
 ### Playwright
 
@@ -153,7 +170,54 @@ k6 run stress-test.js
 A estrutura do projeto está organizada da seguinte forma:
 
 ```plaintext
-(EM DESENVOLVIMENTO)
+
+PB-COMPASS-FINAL/
+│
+├── api/                         # Diretório reservado para API
+│   └── cypress/        
+│       └── e2e/                 # Diretório dos testes
+│
+├── assets/                      # Arquivos de mídia e estáticos
+│
+├── k6/                          # Diretório para scripts de teste de carga com K6
+│   ├── reports/
+│   │     └── report.pdf         # Relatório gerado pelos testes de carga
+│   │
+│   ├── run-tests.js             # Script para execução geral de testes
+│   │  
+│   └── scripts/
+│         ├── create-movie.js           # Script para criar filmes
+│         ├── create-ticket.js          # Script para criar tickets
+│         ├── get-movie.js              # Script para obter um filme específico
+│         ├── get-movies-list.js        # Script para listar filmes
+│         ├── stress-test.js            # Script para teste de estresse
+│         ├── update-movie.js           # Script para atualizar filmes
+│         ├── zdelete-movie.js          # Script para deletar filmes
+│         └──               
+│
+├── playwright/                     # Diretório para testes de automação com Playwright
+│   └── tests/                      
+│      ├── movies/
+│      │   ├── negativo/            # Testes negativos relacionados a filmes
+│      │   └── positivo/            # Testes positivos relacionados a filmes
+│      ├── tickets/
+│      │   ├── negativo/            # Testes negativos relacionados a tickets
+│      │   └── positivo/            # Testes positivos relacionados a tickets
+│      └── fluxoPrincipal.spec.js   # Teste principal cobrindo o fluxo completo
+│
+├── util/                        # Utilitários e configurações adicionais
+│
+├── postman/                              # Arquivos para uso com o Postman
+│   └── Cinema.postman_collection.json    # Coleção de requisições da API para Postman
+│
+├── mapa-mental.pdf              # Arquivo com o mapa mental do projeto
+├── plano-de-teste.md            # Documento detalhando o plano de testes
+│
+├── .gitignore                   # Arquivo para ignorar arquivos/diretórios no Git
+├── package-lock.json            # Registro das dependências instaladas
+├── package.json                 # Dependências e scripts do projeto
+├── playwright.config.js         # Configuração do Playwright
+└── README.md                    # Documentação principal do projeto
 ```
 
 ---
