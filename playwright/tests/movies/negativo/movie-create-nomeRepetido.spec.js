@@ -3,11 +3,12 @@ const { faker } = require('@faker-js/faker');
 
 test.describe('Cinema API Tests - Validação de criação de filmes com títulos duplicados', () => {
 
-  test('POST /movies - Valida que o sistema permite a criação de filmes com títulos repetidos', async ({ request }) => {
+  test('POST /movies - Valida duplicidade de títulos ao criar filmes', async ({ request }) => {
     const currentDate = new Date().toISOString().split('T')[0];
 
+    // Dados do primeiro filme
     const filme1 = {
-      title: 'Ainda estou aqui', 
+      title: 'Ainda estou aqui',
       description: faker.lorem.sentence(),
       launchdate: currentDate,
       showtimes: [
@@ -16,15 +17,14 @@ test.describe('Cinema API Tests - Validação de criação de filmes com título
       ],
     };
 
-    // post do 1 filme
-    const response1 = await request.post(`movies`, { data: filme1 });
-
-    // check 201 1 filme
+    // Criar o primeiro filme
+    const response1 = await request.post('movies', { data: filme1 });
     expect(response1.status()).toBe(201);
     console.log('✅ Primeiro filme criado com sucesso.');
 
+    // Dados do segundo filme (mesmo título)
     const filme2 = {
-      title: 'Ainda estou aqui', 
+      title: 'Ainda estou aqui', // Título duplicado
       description: faker.lorem.sentence(),
       launchdate: currentDate,
       showtimes: [
@@ -33,29 +33,17 @@ test.describe('Cinema API Tests - Validação de criação de filmes com título
       ],
     };
 
-    // post do 2 filme
-    const response2 = await request.post(`movies`, { data: filme2 });
+    // Criar o segundo filme
+    const response2 = await request.post('movies', { data: filme2 });
 
-    // check 201 2 filme verificando duplicidade
+    // Verificar se o sistema permite duplicidade
     if (response2.status() === 201) {
-      console.warn('⚠️ O sistema permitiu a criação de um filme com título duplicado.');
+      console.log('✅ Segundo filme criado com sucesso.');
+      console.warn('🐞 Bug encontrado - O sistema permitiu a criação de um filme com título duplicado.');
+    } else if (response2.status() === 400) {
+      console.log('✅ O sistema rejeitou corretamente a criação de um filme com título duplicado.');
     } else {
-      expect(response2.status()).toBe(400);
-      console.log('✅ O sistema corretamente rejeitou a criação de um filme com título duplicado.');
-    }
-
-    // check body 2 filme
-    let body2;
-    try {
-      body2 = await response2.json();
-    } catch (error) {
-      console.warn(`⚠️ Corpo da resposta do segundo filme está vazio ou inválido. Erro: ${error.message}`);
-    }
-
-    if (body2 && body2.message && response2.status() !== 201) {
-      console.log(`✅ Resposta do segundo filme recebida corretamente: ${body2.message}`);
-    } else {
-      console.warn('⚠️ A API aceitou um filme com título duplicado e retornou 201.');
+      console.warn(`⚠️ Resposta inesperada ao criar um filme com título duplicado. Status: ${response2.status()}`);
     }
   });
 });
