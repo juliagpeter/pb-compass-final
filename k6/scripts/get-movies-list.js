@@ -4,19 +4,25 @@ import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporte
 
 const baseUrl = 'http://127.0.0.1:3000/movies';
 
-
 export const options = {
     scenarios: {
         get_movies: {
             executor: 'constant-arrival-rate',
             maxVUs: 100, 
             timeUnit: '1s',
-            duration: '1s',  
+            rate: 100,  // 100 requisições por segundo
             preAllocatedVUs: 0,
-            rate: 100, 
-            exec: 'get_movies', 
+            duration: '1s',  // duração do teste
+            exec: 'get_movies',
         }
-    }
+    },
+    thresholds: {
+        http_req_duration: ['p(95)<200', 'p(99)<500'],
+        
+        http_req_failed: ['rate<0.01'],
+        
+        'checks{scenario:get_movies}': ['rate>0.99'],
+    },
 };
 
 export default function () {
@@ -25,17 +31,15 @@ export default function () {
 
 export function get_movies() {
     const res = http.get(baseUrl);
+    
     check(res, {
-        'GET concluido': (r) => r.status === 200,
+        'GET concluído com sucesso': (r) => r.status === 200,
         'Tempo de resposta menor que 200ms': (r) => r.timings.duration < 200,
     });
-
 }
 
 export function handleSummary(data) {
     return {
-      // Gera o relatório HTML na pasta 'reports' com o nome baseado no script
-      'reports/get-movies.html': htmlReport(data),
+        'reports/get-movies.html': htmlReport(data),
     };
-  }
-
+}

@@ -19,10 +19,19 @@ export const options = {
             rate: 100, 
             exec: 'update_movie', 
         }
-    }
+    },
+    thresholds: {
+        // Garantir que 95% das requisições sejam concluídas em menos de 300ms
+        http_req_duration: ['p(95)<300', 'p(99)<500'],
+        
+        // Menos de 1% de falhas
+        http_req_failed: ['rate<0.01'],
+        
+        // Pelo menos 99% das verificações devem ser bem-sucedidas
+        'checks{scenario:update_movies}': ['rate>0.99'],
+    },
 };
 
-// pega os 200 primeiros
 export function setup() {
     const setupData = http.get(baseUrl);
     let ids = [];
@@ -33,7 +42,6 @@ export function setup() {
         return null;
     }
 
-    // gerar filmes
     const movies = [];
     for (let i = 0; i < 200; i++) {
         const movie = {
@@ -51,18 +59,15 @@ export function setup() {
     return { ids, movies };
 }
 
-// funcao principal
 export default function (setupData) {
     update_movie(setupData);  
 }
 
-// update
 export function update_movie(setupData) {
-    const movieIndex = __ITER % setupData.ids.length;  
+    const movieIndex = __ITER % setupData.ids.length;  // Acessa filmes de forma cíclica
     const movieId = setupData.ids[movieIndex];
     const movie = setupData.movies[movieIndex];
 
-    // gerar dados
     const updatedMovie = {
         title: movie.title,
         description: movie.description,
@@ -76,19 +81,16 @@ export function update_movie(setupData) {
         headers: { 'Content-Type': 'application/json' },
     };
 
-    // solicitacao com put
     const res = http.put(`${baseUrl}/${movieId}`, payload, params);
 
     check(res, {
-        'PUT concluído': (r) => r.status === 200,
+        'PUT concluído com sucesso': (r) => r.status === 200,
         'Tempo de resposta menor que 300ms': (r) => r.timings.duration < 300,
     });
-
 }
 
 export function handleSummary(data) {
     return {
-      // Gera o relatório HTML na pasta 'reports' com o nome baseado no script
-      'reports/update-movies.html': htmlReport(data),
+        'reports/update-movies.html': htmlReport(data),
     };
-  }
+}

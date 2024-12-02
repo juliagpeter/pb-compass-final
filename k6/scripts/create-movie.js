@@ -8,7 +8,7 @@ function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Opções
+// Opções com Thresholds
 export const options = {
     scenarios: {
         create_movies: {
@@ -20,7 +20,12 @@ export const options = {
             rate: 100, 
             exec: 'create_movie', 
         }
-    }
+    },
+    thresholds: {
+        http_req_duration: ['p(95)<300', 'p(99)<500'], // 95% das requisições em menos de 300ms, 99% em menos de 500ms
+        http_req_failed: ['rate<0.01'],                // Menos de 1% das requisições podem falhar
+        'checks{scenario:create_movies}': ['rate>0.99'], // Pelo menos 99% das validações devem passar no cenário create_movies
+    },
 };
 
 // Gerar 200 filmes
