@@ -11,11 +11,11 @@ export const options = {
     scenarios: {
         update_movies: {
             executor: 'constant-arrival-rate',
-            rate: 100,  
+            maxVUs: 100, 
             timeUnit: '1s',
             duration: '1s',  
             preAllocatedVUs: 0,
-            maxVUs: 100,
+            rate: 100, 
             exec: 'update_movie', 
         }
     }
@@ -79,8 +79,8 @@ export function update_movie(setupData) {
     const res = http.put(`${baseUrl}/${movieId}`, payload, params);
 
     check(res, {
-        'Atualização de filme com sucesso': (r) => r.status === 200,
-        'Tempo de resposta em menos de 300 milissegundos': (r) => r.timings.duration < 300,
+        'PUT concluído': (r) => r.status === 200,
+        'Tempo de resposta menor que 300ms': (r) => r.timings.duration < 300,
     });
 
 }
