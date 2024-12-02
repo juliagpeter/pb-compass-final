@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { check } from 'k6';
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 const baseUrl = 'http://127.0.0.1:3000/tickets';
 const randomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -47,3 +48,10 @@ export default function (setupData) {
         'Tempo de resposta < 300ms': (r) => r.timings.duration < 300,
     });
 }
+
+export function handleSummary(data) {
+    return {
+      // Gera o relatório HTML na pasta 'reports' com o nome baseado no script
+      'reports/create-ticket-report.html': htmlReport(data),
+    };
+  }
