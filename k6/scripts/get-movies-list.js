@@ -27,7 +27,7 @@ export function get_movies() {
     const res = http.get(baseUrl);
     check(res, {
         'GET concluido': (r) => r.status === 200,
-        'Tempo de resposta menor que 100ms': (r) => r.timings.duration < 200,
+        'Tempo de resposta menor que 200ms': (r) => r.timings.duration < 200,
     });
 
 }
