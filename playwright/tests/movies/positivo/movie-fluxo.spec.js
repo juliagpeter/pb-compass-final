@@ -5,9 +5,9 @@ test.describe('Cinema API Tests - Fluxo completo de POST, GET, PUT e DELETE', ()
   test('POST /movies, GET /movies/:id, PUT /movies/:id, DELETE /movies/:id', async ({ request }) => {
     const currentDate = new Date().toISOString().split('T')[0];
 
-    // Criar dados do filme
+    // hera data
     const filme = {
-      title: faker.word.words(2),
+      title: faker.word.words(4),
       description: faker.lorem.sentence(),
       launchdate: currentDate,
       showtimes: [

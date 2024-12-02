@@ -7,7 +7,7 @@ test.describe('Cinema API Tests - Validação de criação e exclusão de filme'
 
     // Dados para criação do filme
     const filme = {
-      title: faker.word.words(2),
+      title: faker.word.words(4),
       description: faker.lorem.sentence(),
       launchdate: currentDate,
       showtimes: [
