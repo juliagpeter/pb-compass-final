@@ -1,0 +1,2 @@
+✅ Requisição inválida retornou erro 400 conforme esperado.
+✅ Mensagens de erro validadas com sucesso: [ 'Título deve ser do tipo String', 'Descrição do filme é mandatória' ]

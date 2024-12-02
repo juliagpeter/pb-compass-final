@@ -1,29 +1,20 @@
 const { test, expect } = require('@playwright/test');
-const { faker } = require('@faker-js/faker');
+const generateMovie = require('../../../util/generate-movie');
 
 test.describe('Cinema API Tests - Validação de criação e busca por ID', () => {
   test('POST /movies e GET /movies/:id - Criação e busca de filme por ID', async ({ request }) => {
     const currentDate = new Date().toISOString().split('T')[0];
 
-    // Dados para criação do filme
-    const filme = {
-      title: faker.word.words(4),
-      description: faker.lorem.sentence(),
-      launchdate: currentDate,
-      showtimes: [
-        faker.date.future().toISOString().split('T')[0],
-        faker.date.future().toISOString().split('T')[0],
-      ],
-    };
+    const filme = await generateMovie();
 
-    // Criar filme
+    // post filme
     const createResponse = await request.post('movies', { data: filme });
 
-    // Verificar status da criação
+    // check 201
     expect(createResponse.status()).toBe(201);
     console.log('✅ Filme criado com sucesso.');
 
-    // Buscar lista de filmes para capturar o ID do filme criado
+    // search de filme por nome
     const getMoviesResponse = await request.get('movies');
     expect(getMoviesResponse.status()).toBe(200);
 
@@ -37,13 +28,13 @@ test.describe('Cinema API Tests - Validação de criação e busca por ID', () =
 
     console.log(`✅ Filme encontrado na lista: ${createdMovie.title} (ID: ${createdMovie._id})`);
 
-    // Buscar filme por ID
+    // busca por id
     const getByIdResponse = await request.get(`movies/${createdMovie._id}`);
     expect(getByIdResponse.status()).toBe(200);
 
     const movieById = await getByIdResponse.json();
 
-    // Validar estrutura do filme retornado
+    // check estrutura
     try {
       expect(movieById).toHaveProperty('title', filme.title);
       expect(movieById).toHaveProperty('description', filme.description);

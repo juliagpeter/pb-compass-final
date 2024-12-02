@@ -1,20 +1,12 @@
 const { test, expect } = require('@playwright/test');
-const { faker } = require('@faker-js/faker');
+const generateMovie = require('../../../util/generate-movie');
 
 test.describe('Cinema API Tests - Validação de criação e atualização de filme', () => {
   test('POST /movies e PUT /movies/:id - Criação e atualização de filme', async ({ request }) => {
     const currentDate = new Date().toISOString().split('T')[0];
 
     // data movie
-    const filme = {
-      title: faker.word.words(4),
-      description: faker.lorem.sentence(),
-      launchdate: currentDate,
-      showtimes: [
-        faker.date.future().toISOString().split('T')[0],
-        faker.date.future().toISOString().split('T')[0],
-      ],
-    };
+    const filme = await generateMovie();
 
     // post filme
     const createResponse = await request.post('movies', { data: filme });
@@ -38,14 +30,7 @@ test.describe('Cinema API Tests - Validação de criação e atualização de fi
     console.log(`✅ Filme encontrado na lista: ${createdMovie.title} (ID: ${createdMovie._id})`);
 
     // new data
-    const updatedFilme = {
-      title: faker.word.words(3),
-      description: faker.lorem.paragraph(),
-      launchdate: currentDate,
-      showtimes: [
-        faker.date.future().toISOString().split('T')[0],
-      ],
-    };
+    const updatedFilme = await generateMovie();
 
     // put by id
     const updateResponse = await request.put(`movies/${createdMovie._id}`, { data: updatedFilme });

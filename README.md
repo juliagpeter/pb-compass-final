@@ -68,6 +68,10 @@ Siga as etapas abaixo para configurar o projeto e iniciar o servidor.
 
 ---
 
+## 📜 Plano de Testes
+
+Para facilitar a compreensão dos testes do projeto, acompanhe o plano de testes [aqui](plano-de-teste.md).
+
 ## 🚀 Executando os Testes
 
 ## Postman

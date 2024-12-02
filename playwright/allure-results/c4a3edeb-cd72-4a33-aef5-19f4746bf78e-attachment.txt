@@ -1,0 +1,4 @@
+✅ Filme criado com sucesso.
+✅ Filme encontrado na lista: spectaculum traho velut ascit (ID: k5q29FBuQOesQvVU)
+✅ Filme excluído com sucesso: spectaculum traho velut ascit
+✅ Confirmação de que o filme foi removido: ID k5q29FBuQOesQvVU

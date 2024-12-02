@@ -1,0 +1,4 @@
+✅ Filme criado com sucesso.
+✅ Filme encontrado na lista: callide ter celer natus (ID: oscVZK6uIvDinuF5)
+✅ Filme excluído com sucesso: callide ter celer natus
+✅ Filme não encontrado após exclusão.
