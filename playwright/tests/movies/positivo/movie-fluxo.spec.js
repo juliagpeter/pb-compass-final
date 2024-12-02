@@ -3,7 +3,6 @@ const generateMovie = require('../../../util/generate-movie');
 
 test.describe('nestjs-cinema: Fluxo de filme completo', () => {
   test('Deve criar um filme, buscar por ID, alterar através do PUT e deletar', async ({ request }) => {
-    const currentDate = new Date().toISOString().split('T')[0];
 
     // gera data
     const filme = await generateMovie();

@@ -3,7 +3,6 @@ const generateMovie = require('../../../util/generate-movie');
 
 test.describe('Cinema API Tests - Validação de criação e busca por ID', () => {
   test('POST /movies e GET /movies/:id - Criação e busca de filme por ID', async ({ request }) => {
-    const currentDate = new Date().toISOString().split('T')[0];
 
     const filme = await generateMovie();
 

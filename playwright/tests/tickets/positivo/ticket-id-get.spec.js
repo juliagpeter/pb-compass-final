@@ -1,20 +1,11 @@
 const { test, expect } = require('@playwright/test');
-const { faker } = require('@faker-js/faker');
+const generateMovie = require('../../../util/generate-movie');
 
 test.describe('Cinema API Tests - Validação de Criação de Ticket e Busca por ID', () => {
   test('POST /movies, POST /tickets e GET /tickets/:id - Criação de filme, ticket e busca por ID', async ({ request }) => {
-    const currentDate = new Date().toISOString().split('T')[0];
 
     // gera dados
-    const filme = {
-      title: faker.word.words(4),
-      description: faker.lorem.sentence(),
-      launchdate: currentDate,
-      showtimes: [
-        faker.date.future().toISOString().split('T')[0],
-        faker.date.future().toISOString().split('T')[0],
-      ],
-    };
+    const filme = await generateMovie();
 
     // post filme
     const createMovieResponse = await request.post('movies', { data: filme });

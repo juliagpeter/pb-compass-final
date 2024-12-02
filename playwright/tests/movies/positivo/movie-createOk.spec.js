@@ -4,7 +4,6 @@ const generateMovie = require('../../../util/generate-movie');
 test.describe('Cinema API Tests - Validando Resposta 201', () => {
 
   test('POST /movies - Valida criação de filme e corpo da resposta', async ({ request }) => {
-    const currentDate = new Date().toISOString().split('T')[0];
 
     const filme = await generateMovie();
 
