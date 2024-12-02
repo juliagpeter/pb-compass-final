@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { check } from 'k6';
+import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 const baseUrl = 'http://127.0.0.1:3000/movies';
 
@@ -7,7 +8,7 @@ function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// options
+// Opções
 export const options = {
     scenarios: {
         create_movies: {
@@ -22,7 +23,7 @@ export const options = {
     }
 };
 
-// gerar 200 filmes
+// Gerar 200 filmes
 export function setup() {
     const movies = [];
     for (let i = 0; i < 200; i++) {
@@ -65,5 +66,12 @@ export function create_movie(setupData) {
         'POST de filme': (r) => r.status === 201,
         'Tempo de resposta menor que 200ms': (r) => r.timings.duration < 200,
     });
+}
 
+// Função para gerar o relatório HTML
+export function handleSummary(data) {
+  return {
+    // Gera o relatório HTML na pasta 'reports' com o nome baseado no script
+    'reports/create-movie-report.html': htmlReport(data),
+  };
 }
