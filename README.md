@@ -60,6 +60,11 @@ Siga as etapas abaixo para configurar o projeto e iniciar o servidor.
 
 ## 🚀 Executando os Testes
 
+## Postman
+
+Coleção de testes manuais no Postman está disponivel [aqui](postman/Cinema.postman_collection.json)
+
+
 ### Playwright
 
 #### Todos os Testes
