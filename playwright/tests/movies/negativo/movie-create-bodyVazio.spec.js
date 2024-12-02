@@ -1,19 +1,11 @@
 const { test, expect } = require('@playwright/test');
-const { faker } = require('@faker-js/faker');
+const generateMovie = require('../../../util/generate-movie');
 
 test.describe('Cinema API Tests - Verificação de resposta vazia no POST /movies', () => {
   test('POST /movies - Verifica que a resposta da criação não retorna corpo', async ({ request }) => {
-    const filmeValido = {
-      title: faker.lorem.words(3),
-      description: faker.lorem.sentence(),
-      launchdate: new Date().toISOString().split('T')[0],
-      showtimes: [
-        faker.date.future().toISOString().split('T')[0],
-        faker.date.future().toISOString().split('T')[0],
-      ],
-    };
+    const filme = await generateMovie();
 
-    const response = await request.post('movies', { data: filmeValido });
+    const response = await request.post('movies', { data: filme });
 
     expect(response.status()).toBe(201);
     console.log('✅ Filme criado com sucesso.');

@@ -1,21 +1,13 @@
 const { test, expect } = require('@playwright/test');
 const { faker } = require('@faker-js/faker');
+const generateMovie = require('../util/generate-movie');
 
 test.describe('nestjs-cinema - Fluxo Completo', () => {
 
   test('Criação, Edição e Exclusão de Filmes e Tickets', async ({ request }) => {
-    const currentDate = new Date().toISOString().split('T')[0];
 
     // 1. gera os dados do filme
-    const filme = {
-      title: faker.word.words(2),
-      description: faker.lorem.sentence(),
-      launchdate: currentDate,
-      showtimes: [
-        faker.date.future().toISOString().split('T')[0],
-        faker.date.future().toISOString().split('T')[0],
-      ],
-    };
+    const filme = await generateMovie();
 
     const createMovieResponse = await request.post('movies', { data: filme });
     expect(createMovieResponse.status()).toBe(201);

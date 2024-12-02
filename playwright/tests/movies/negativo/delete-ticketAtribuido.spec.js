@@ -1,20 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const { faker } = require('@faker-js/faker');
+const generateMovie = require('../../../util/generate-movie');
 
 test.describe('Cinema API Tests - Validação de Exclusão de Filme com Ticket Atribuído', () => {
   
   test('POST /movies e POST /tickets - Criação de filme e ticket, tentativa de exclusão do filme atribuído ao ticket', async ({ request }) => {
     // Criar um filme
-    const currentDate = new Date().toISOString().split('T')[0];
-    const filme = {
-      title: faker.word.words(4),
-      description: faker.lorem.sentence(),
-      launchdate: currentDate,
-      showtimes: [
-        faker.date.future().toISOString().split('T')[0],
-        faker.date.future().toISOString().split('T')[0],
-      ],
-    };
+    const filme = await generateMovie();
 
     // Enviar requisição para criar o filme
     const createMovieResponse = await request.post('movies', { data: filme });
