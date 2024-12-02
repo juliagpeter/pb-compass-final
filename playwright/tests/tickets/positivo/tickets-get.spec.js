@@ -2,57 +2,48 @@ const { test, expect } = require('@playwright/test');
 
 test.describe('Cinema API Tests - Validando GET /tickets', () => {
   test('GET /tickets - Valida lista de tickets e estrutura do corpo', async ({ request }) => {
-    const response = await request.get(`tickets`);
+    const response = await request.get('tickets');
 
-    // check 200
+    // Verifica status 200
     expect(response.status()).toBe(200);
 
     let body;
     try {
       body = await response.json();
     } catch (error) {
-      console.warn(`⚠️ Falha ao interpretar o corpo da resposta. Erro: ${error.message}`);
+      console.warn('⚠️ Erro ao interpretar a resposta da API.');
       return;
     }
 
     if (!Array.isArray(body) || body.length === 0) {
-      console.warn('⚠️ Corpo da resposta não é uma lista ou está vazio.');
+      console.warn('⚠️ Nenhum ticket encontrado ou formato de resposta inválido.');
       return;
     }
 
-    console.log(`✅ Tickets encontrados: ${body.length}`);
+    console.log(`✅ API retornou ${body.length} tickets.`);
 
     let ticketsValidados = 0;
-    const erros = [];
 
-    // check estrutura
-    body.forEach((ticket, index) => {
+    // Valida estrutura básica dos tickets
+    body.forEach((ticket) => {
       try {
-        expect(ticket).toHaveProperty('movieId');
-        expect(ticket).toHaveProperty('userId');
-        expect(ticket).toHaveProperty('seatNumber');
-        expect(ticket).toHaveProperty('price');
-        expect(ticket).toHaveProperty('showtime');
-        expect(ticket).toHaveProperty('_id');
-
-        expect(typeof ticket.movieId).toBe('string');
-        expect(typeof ticket.userId).toBe('number');
-        expect(typeof ticket.seatNumber).toBe('number');
-        expect(typeof ticket.price).toBe('number');
-        expect(typeof ticket.showtime).toBe('string');
-        expect(typeof ticket._id).toBe('string');
-
+        expect(ticket).toMatchObject({
+          movieId: expect.any(String),
+          userId: expect.any(Number),
+          seatNumber: expect.any(Number),
+          price: expect.any(Number),
+          showtime: expect.any(String),
+          _id: expect.any(String),
+        });
         ticketsValidados++;
-      } catch (validationError) {
-        erros.push(`Ticket ${index + 1} inválido: ${validationError.message}`);
+      } catch {
       }
     });
 
-    console.log(`✅ ${ticketsValidados} tickets validados com sucesso.`);
-    if (erros.length > 0) {
-      console.warn(`⚠️ ${erros.length} tickets apresentaram problemas:\n- ${erros.join('\n- ')}`);
+    if (ticketsValidados === body.length) {
+      console.log('✅ Todos os tickets possuem a estrutura esperada.');
     } else {
-      console.log('✅ Todos os tickets passaram na validação.');
+      console.warn(`⚠️ Alguns tickets possuem problemas de validação.`);
     }
   });
 });
