@@ -170,7 +170,7 @@ Como cliente, quero criar um ticket para assistir a um filme em um horário espe
 - A criação de um ticket deve retornar o status **201** quando os dados fornecidos forem válidos.  
 - O corpo da resposta deve incluir os dados do ticket criado:  
   - `movieId`: ID do filme.  
-  - `quantity`: Número de assentos reservados.  
+  - `quantity`: Número do assento.  
   - `showtime`: Horário da sessão no formato ISO.  
 - Caso algum campo obrigatório esteja ausente ou inválido:
   - Deve retornar o status **400**.
