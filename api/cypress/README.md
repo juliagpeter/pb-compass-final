@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../assets/compassBanner.png" alt="Logo" width="100%">
+  <img src="../../assets/compassBanner.png" alt="Logo" width="100%">
   <h1>Programa de Bolsa: Software Quality Engineer</h1>
 </div>
 
