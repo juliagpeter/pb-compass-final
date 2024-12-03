@@ -12,11 +12,11 @@ Este projeto é uma suíte de testes de Qualidade para a API [nestjs-cinema](htt
 ### Olá, eu sou a Júlia Peter! 👋
 
 Estudante de 20 anos do quarto semestre do curso Técnologo em Sistemas para Internet no campus Pelotas no Instituto Federal Sul-riograndense e participante do programa de bolsas de Software Quality Engineer na Compass UOL.
-- 😄 Pronomes: she/her
+- 😄 Pronomes: ela/dela
 - 📫 Contato: juliagpeter0@gmail.com
 
 ## 👥 Agradecimentos
-Gostaria de agradecer ao suporte dos meus colegas: João, Lucas, Gabrielle, Alisson e Malek que contribuíram para a construção deste projeto.
+Gostaria de agradecer ao suporte dos meus colegas: João, Lucas, Gabrielle, Gabriel, Alisson e Malek que contribuíram para a construção deste projeto.
 
 ## 📦 Instalação
 
@@ -154,6 +154,8 @@ Siga o guia de execução clicando [aqui](playwright/README.md).
 ## K6
 
 Siga o guia de execução clicando [aqui](k6/README.md).
+
+---
 
 ## 💬 Contato
 

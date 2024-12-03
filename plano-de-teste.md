@@ -25,6 +25,14 @@ Esse documento apresenta o plano de teste completo da API nestjs-cinema, incluin
 
 ![mapaMental2](./assets/nestjs-cinema-ok.png) 
 
+## Prompt
+
+Para incrementar esse plano de teste, foi utilizado a ferramenta do ChatGPT seguindo o seguinte prompt como base:
+
+> Assuma o papel de um QA Senior e me auxilie a aprimorar esse plano de testes, incrementando novos pontos essenciais e melhorando a coesão do documento.
+
+A partir desse ponto fui adaptando as preferências da inteligência artificial para que aprimorasse o plano de testes da melhor forma possível.
+
 ## Requisitos Funcionais e Não Funcionais
 
 ### /movies
