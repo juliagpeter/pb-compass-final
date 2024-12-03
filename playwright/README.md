@@ -3,9 +3,9 @@
   <h1>Programa de Bolsa: Software Quality Engineer</h1>
 </div>
 
-# Playwright
+# 🎭 Playwright
 
-
+O Playwright é uma biblioteca Node.js para automatizar o Chromium, Firefox e Safari com uma única API. Ele possibilita testes de ponta a ponta confiáveis para aplicativos web modernos. A ferramenta foi escolhida para esse projeto devido à sua robustez e versatilidade na automação de testes. 
 
 ## 📁 Estrutura do diretório
 
@@ -25,6 +25,7 @@ Os testes em Playwright estão organizados da seguinte maneira:
 ```
 
 ✅ Testes positivos: Representam os cenários bem-sucedidos da aplicação. 
+
 ❌ Testes negativos: Representa os cenários com falhas esperadas da aplicação.
 
 

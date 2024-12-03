@@ -72,106 +72,10 @@ Siga as etapas abaixo para configurar o projeto e iniciar o servidor.
 
 Para facilitar a compreensão dos testes do projeto, acompanhe o plano de testes [aqui](plano-de-teste.md).
 
-## 🚀 Executando os Testes
-
-## Postman
-
-Coleção de testes manuais no Postman está disponivel [aqui](postman/Cinema.postman_collection.json)
-
-Baixe o arquivo e importe dentro do aplicativo do Postman:
-
-![postman1](assets/postman1.png)
-
-![postman2](assets/postman2.png)
-
-Teste as rotas de maneira manual.
-
-### Playwright
-
-#### Todos os Testes
-
-Para executar **todos** os testes automatizados, execute o seguinte comando:
-
-Certifique=se de estar no diretório do Playwright
-
-```bash
-npx playwright test
-```
-
-> **Atenção**: Todos os testes serão executados nos três navegadores suportados (Chromium, Firefox e WebKit), o que pode levar algum tempo.
-
-#### Testes Individuais
-
-Para rodar um teste específico, use o comando abaixo:
-
-```bash
-npx playwright test nomeDoTeste
-```
-
-Exemplo:
-
-```bash
-npx playwright test loginok
-```
-
-Após a execução, o terminal exibirá os resultados dos testes, como mostrado abaixo:
-
-![testeOk](assets/loginok.png)
-
-
-### 📊 Gerando Relatório no Playwright
-
-Você pode gerar um relatório detalhado dos testes utilizando o Allure. Siga os passos abaixo:
-
-#### 1. Gerar Relatório
-
-Após rodar os testes, use o seguinte comando para gerar o relatório de resultados:
-
-```bash
-allure generate ./allure-results -o ./allure-report
-```
-
-#### 2. Abrir o Relatório
-
-Para visualizar o relatório gerado no navegador, execute:
-
-```bash
-allure open ./allure-report
-```
-
-### K6
-
-#### Todos os testes
-
-Para executar **todos** os testes automatizados, execute o seguinte comando:
-
-Certifique-se de estar no diretório do K6.
-
-```bash
-node run-tests.js
-```
-
-> **Atenção**: Todos os testes serão executados e pode levar algum tempo.
-
-#### Testes Individuais
-
-Para rodar um teste específico, use o comando abaixo:
-
-```bash
-k6 run nomeDoTeste.js
-```
-
-Exemplo:
-
-```bash
-k6 run stress-test.js
-```
-
----
 
 ## 📁 Estrutura do Diretório
 
-A estrutura do projeto está organizada da seguinte forma:
+Antes de começar a executar os testes da API, é fundamental entender como esse projeto está estruturado.
 
 ```plaintext
 
@@ -179,9 +83,9 @@ PB-COMPASS-FINAL/
 │
 ├── api/                         # Diretório reservado para API
 │   └── cypress/        
-│       └── e2e/                 # Diretório dos testes
+│       └── e2e/                 # Diretório dos testes cypress
 │
-├── assets/                      # Arquivos de mídia e estáticos
+├── assets/                      # Arquivos de mídia
 │
 ├── k6/                          # Diretório para scripts de teste de carga com K6
 │   ├── reports/
@@ -196,8 +100,7 @@ PB-COMPASS-FINAL/
 │         ├── get-movies-list.js        # Script para listar filmes
 │         ├── stress-test.js            # Script para teste de estresse
 │         ├── update-movie.js           # Script para atualizar filmes
-│         ├── zdelete-movie.js          # Script para deletar filmes
-│         └──               
+│         └── zdelete-movie.js          # Script para deletar filmes           
 │
 ├── playwright/                     # Diretório para testes de automação com Playwright
 │   └── tests/                      
@@ -224,19 +127,31 @@ PB-COMPASS-FINAL/
 └── README.md                    # Documentação principal do projeto
 ```
 
----
+# 🚀 Executando os Testes
 
-## 📘 Comandos Adicionais
+## Postman
 
-Aqui estão alguns comandos úteis para auxiliar na manutenção do projeto:
+Coleção de testes manuais no Postman está disponivel [aqui](postman/Cinema.postman_collection.json)
 
-- **Limpar Relatórios Antigos do Allure**:
-   Caso você precise limpar os resultados anteriores do Allure, use o seguinte comando:
-   ```bash
-   allure generate ./allure-results --clean
-   ```
+Baixe o arquivo e importe dentro do aplicativo do Postman:
 
----
+![postman1](assets/postman1.png)
+
+![postman2](assets/postman2.png)
+
+Teste as rotas de maneira manual.
+
+## Cypress
+
+Siga o guia de execução clicando [aqui](api/cypress/README.md).
+
+## Playwright
+
+Siga o guia de execução clicando [aqui](playwright/README.md).
+
+## K6
+
+Siga o guia de execução clicando [aqui](K6/README.md).
 
 ## 💬 Contato
 
