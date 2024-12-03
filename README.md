@@ -28,6 +28,7 @@ Gostaria de agradecer ao suporte dos meus colegas: João, Lucas, Gabrielle, Gabr
 - Copilot: é uma ferramenta de assistência à codificação que usa Inteligência Artificial (IA) para ajudar os desenvolvedores a escrever código de forma mais rápida e eficaz
 - GitHub: é uma plataforma de desenvolvimento colaborativo que aloja projetos na nuvem utilizando o sistema de controle de versões chamado Git.
 - Postman: é uma ferramenta que dá suporte à documentação das requisições feitas pela API.
+- Trello: é uma ferramenta de gerenciamento de equipes, projetos e produtos.
 
 ## 📦 Instalação
 

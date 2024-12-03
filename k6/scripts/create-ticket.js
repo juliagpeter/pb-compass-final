@@ -12,7 +12,6 @@ const randomDate = () => {
     return `${day}/${month}/${year}`;
 };
 
-// Configuração do teste
 export const options = {
     scenarios: {
         create_tickets: {
@@ -22,7 +21,7 @@ export const options = {
             rate: 100, 
             preAllocatedVUs: 0,
             duration: '1s',
-            exec: 'default',  // Alterado de 'create_ticket' para 'default'
+            exec: 'default', 
         },
     },
     thresholds: {
@@ -37,7 +36,6 @@ export const options = {
     },
 };
 
-// Função de setup: cria um array com os dados para os tickets
 export function setup() {
     return Array.from({ length: 200 }, (_, i) => ({
         movieId: `MovieId ${i + 1}`,
@@ -48,26 +46,21 @@ export function setup() {
     }));
 }
 
-// Função principal que será executada
 export default function (setupData) {
-    const ticket = setupData[__ITER % setupData.length];  // Seleciona o ticket da iteração atual
-    const payload = JSON.stringify(ticket);  // Converte os dados do ticket para JSON
-    const params = { headers: { 'Content-Type': 'application/json' } };  // Define os cabeçalhos para a requisição
+    const ticket = setupData[__ITER % setupData.length];  
+    const payload = JSON.stringify(ticket); 
+    const params = { headers: { 'Content-Type': 'application/json' } }; 
     
-    // Realiza a requisição POST para criar o ticket
     const res = http.post(baseUrl, payload, params);
 
-    // Verificações para sucesso e tempo de resposta
     check(res, {
         'Criação de ticket com sucesso': (r) => r.status === 201,  // Verifica se o status é 201 (Created)
         'Tempo de resposta < 300ms': (r) => r.timings.duration < 300,  // Verifica se o tempo de resposta é menor que 300ms
     });
 }
 
-// Função para gerar o relatório HTML após a execução do teste
 export function handleSummary(data) {
     return {
-        // Gera o relatório HTML na pasta 'reports' com o nome baseado no script
         'reports/create-ticket-report.html': htmlReport(data),
     };
 }

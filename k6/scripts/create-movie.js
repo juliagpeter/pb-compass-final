@@ -8,7 +8,6 @@ function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Opções com Thresholds
 export const options = {
     scenarios: {
         create_movies: {
@@ -73,10 +72,8 @@ export function create_movie(setupData) {
     });
 }
 
-// Função para gerar o relatório HTML
 export function handleSummary(data) {
   return {
-    // Gera o relatório HTML na pasta 'reports' com o nome baseado no script
     'reports/create-movie-report.html': htmlReport(data),
   };
 }
