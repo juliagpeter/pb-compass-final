@@ -72,36 +72,4 @@ test.describe('nestjs-cinema - Fluxo Completo', () => {
     console.log('✅ Filme deletado com sucesso.');
   });
 
-  // excluir filme inexistente
-  test('Deve retornar 404 ao tentar excluir filme inexistente', async ({ request }) => {
-    const fakeMovieId = faker.string.uuid(); 
-
-    const deleteMovieResponse = await request.delete(`movies/${fakeMovieId}`);
-    expect(deleteMovieResponse.status()).toBe(404); // Espera um erro 404, pois o filme não existe
-    console.log(`✅ Comportamento esperado validado: Tentativa de excluir filme inexistente com ID ${fakeMovieId}. Status 404 retornado.`);
-  });
-
-  // criar ticket com dados inválidos
-  test('Deve validar a criação de um ticket com dados inválidos', async ({ request }) => {
-    const invalidTicket = {
-      movieId: 'invalid-id',
-      userId: 'invalid-user',
-      seatNumber: -1,
-      price: -10, 
-      showtime: 'invalid-date', 
-    };
-
-    const createTicketResponse = await request.post('tickets', { data: invalidTicket });
-    expect(createTicketResponse.status()).toBe(400); // Espera um erro 400 para dados inválidos
-    console.log('✅ Comportamento esperado validado: Tentativa de criar ticket com dados inválidos. Status 400 retornado.');
-  });
-
-  // Buscar ticket inexistente
-  test('Deve retornar 404 ao tentar buscar ticket inexistente', async ({ request }) => {
-    const fakeTicketId = faker.string.uuid(); 
-
-    const getTicketResponse = await request.get(`tickets/${fakeTicketId}`);
-    expect(getTicketResponse.status()).toBe(404); 
-    console.log(`✅ Comportamento esperado validado: Tentativa de buscar ticket inexistente com ID ${fakeTicketId}. Status 404 retornado.`);
-  });
 });

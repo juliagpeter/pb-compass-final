@@ -5,7 +5,6 @@ const generateMovie = require('../../../util/generate-movie');
 test.describe('Cinema API Tests - Validando Resposta 201', () => {
 
   test('POST /movies - Valida criação de filme e resposta sem corpo', async ({ request }) => {
-    // Gerando dados válidos para criar um filme
     const filme = {
       title: faker.lorem.words(3),
       description: faker.lorem.sentence(),
