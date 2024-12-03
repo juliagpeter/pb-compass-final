@@ -1,8 +1,8 @@
-// avalia a capacidade de um sistema ou aplicação de se adaptar e resistir a condições adversas e extremas
+
+// a ideia do smoke test é garantir que os principais fluxos da API estão funcionando sem entrar em detalhes mais profundos, como validações específicas.
 
 import http from 'k6/http';
 import { check, sleep, group } from 'k6';
-import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 const BASE_URL = 'http://127.0.0.1:3000/movies'; 
 
@@ -23,11 +23,10 @@ export const options = {
     },
 };
 
-// Corpo fixo da requisição
 const payload = JSON.stringify({
   title: "AAA",
   description: "teste",
-  launchdate: "{{currentDate}}",
+  launchdate: new Date().toISOString(),
   showtimes: ["01", "02"]
 });
 
@@ -40,7 +39,7 @@ function logFailure(reqName, res) {
 }
 
 export default function () {
-    group('Testando endpoint POST /movies', () => {
+    group('Smoke Test - Endpoint POST /movies', () => {
         const res = http.post(BASE_URL, payload, { headers });
 
         const isSuccessful = check(res, {
@@ -54,10 +53,4 @@ export default function () {
 
         sleep(0.1);
     });
-}
-
-export function handleSummary(data) {
-    return {
-        'reports/stress-test-movies.html': htmlReport(data),
-    };
 }
