@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const generateMovie = require('../../../util/generate-movie');
+const { faker } = require('@faker-js/faker');
 
 test.describe('Cinema API Tests - Validação de Criação de Ticket e Busca por ID', () => {
   test('POST /movies, POST /tickets e GET /tickets/:id - Criação de filme, ticket e busca por ID', async ({ request }) => {

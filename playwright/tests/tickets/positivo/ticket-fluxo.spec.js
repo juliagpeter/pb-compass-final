@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const generateMovie = require('../../../util/generate-movie');
+const { faker } = require('@faker-js/faker');
 
 test.describe('Cinema API Tests - Fluxo Completo de Filmes e Tickets', () => {
   test('POST /movies, GET /movies, POST /tickets, PUT /tickets, GET /tickets/:id, DELETE /tickets/:id - Fluxo completo', async ({ request }) => {

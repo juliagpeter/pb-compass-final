@@ -23,17 +23,12 @@ test.describe('nestjs-cinema - Fluxo Completo', () => {
     console.log(`✅ Filme encontrado na lista: ${createdMovie.title} (ID: ${createdMovie._id})`);
 
     // 3. PUT - edita o filme
-    const updatedFilme = {
-      title: faker.word.words(3),
-      description: faker.lorem.paragraph(),
-      launchdate: currentDate,
-      showtimes: [faker.date.future().toISOString().split('T')[0]],
-    };
+    const updatedFilme = await generateMovie();
 
     const updateMovieResponse = await request.put(`movies/${createdMovie._id}`, { data: updatedFilme });
     expect(updateMovieResponse.status()).toBe(200);
-    console.log(`✅ Filme atualizado com sucesso: ${updatedFilme.title}`);
-
+    console.log(`✅ Filme atualizado com sucesso: \`${updatedFilme.title}\``);
+    
     // 4. POST - cria um ticket
     const ticket = {
       movieId: createdMovie._id,

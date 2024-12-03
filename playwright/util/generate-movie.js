@@ -1,4 +1,3 @@
-// generate-movie.js
 const { faker } = require('@faker-js/faker');
 
 async function generateMovie() {
