@@ -29,7 +29,7 @@ Os testes em Playwright estão organizados da seguinte maneira:
 ❌ Testes negativos: Representa os cenários com falhas esperadas da aplicação.
 
 
-#### Todos os Testes
+### Todos os Testes
 
 Para executar **todos** os testes automatizados, execute o seguinte comando:
 
@@ -41,7 +41,7 @@ npx playwright test
 
 > **Atenção**: Todos os testes serão executados nos três navegadores suportados (Chromium, Firefox e WebKit), o que pode levar algum tempo.
 
-#### Testes Individuais
+### Testes Individuais
 
 Para rodar um teste específico, use o comando abaixo:
 
