@@ -15,6 +15,8 @@ Estudante de 20 anos do quarto semestre do curso Técnologo em Sistemas para Int
 - 😄 Pronomes: she/her
 - 📫 Contato: juliagpeter0@gmail.com
 
+## 👥 Agradecimentos
+Gostaria de agradecer ao suporte dos meus colegas: João, Lucas, Gabrielle, Alisson e Malek que contribuíram para a construção deste projeto.
 
 ## 📦 Instalação
 
@@ -151,7 +153,7 @@ Siga o guia de execução clicando [aqui](playwright/README.md).
 
 ## K6
 
-Siga o guia de execução clicando [aqui](K6/README.md).
+Siga o guia de execução clicando [aqui](k6/README.md).
 
 ## 💬 Contato
 
