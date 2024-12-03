@@ -27,11 +27,15 @@ Esse documento apresenta o plano de teste completo da API nestjs-cinema, incluin
 
 ## Prompt
 
-Para incrementar esse plano de teste, foi utilizado a ferramenta do ChatGPT seguindo o seguinte prompt como base:
+Para incrementar esse plano de teste, foi utilizado a ferramenta do ChatGPT com o seguinte prompt como base:
 
 > Assuma o papel de um QA Senior e me auxilie a aprimorar esse plano de testes, incrementando novos pontos essenciais e melhorando a coesão do documento.
 
 A partir desse ponto fui adaptando as preferências da inteligência artificial para que aprimorasse o plano de testes da melhor forma possível.
+
+## Cobertura de automação
+
+A cobertura de testes foi planejada para garantir que todos os aspectos críticos da API sejam validados. Isso inclui testar cenários positivos e negativos, garantindo que tanto os fluxos de sucesso quanto as falhas sejam corretamente tratados. Além disso, todos os verbos da API, como GET, POST, PUT e DELETE, foram cobertos, assegurando que todas as operações essenciais sejam testadas em diferentes condições de uso. Para garantir a performance da aplicação, também foram realizados testes de carga e tempo de resposta, validando que a API se comporte de forma eficiente mesmo sob condições adversas.
 
 ## Requisitos Funcionais e Não Funcionais
 

@@ -20,15 +20,15 @@ Gostaria de agradecer ao suporte dos meus colegas: João, Lucas, Gabrielle, Gabr
 
 ## 🧰 Ferramentas
 
-- Node: é um ambiente de execução JavaScript que permite executar aplicações desenvolvidas com a linguagem de forma autônoma, sem depender de um navegador. 
-- Playwright: é uma poderosa ferramenta de automação de testes web que oferece suporte a múltiplos navegadores, incluindo Chrome, Firefox e Safari.
-- Cypress: é uma ferramenta projetada para simplificar o processo de criação, execução e depuração de testes.
-- K6: é uma ferramenta de teste de carga de código aberto e gratuita, com isso será capaz de detectar regressões de desempenho e problemas mais cedo, permitindo construir sistemas mais resilientes e aplicativos robustos.
-- ChatGPT: é uma ferramenta para processamento de linguagem natural treinada pela OpenAI.
-- Copilot: é uma ferramenta de assistência à codificação que usa Inteligência Artificial (IA) para ajudar os desenvolvedores a escrever código de forma mais rápida e eficaz
-- GitHub: é uma plataforma de desenvolvimento colaborativo que aloja projetos na nuvem utilizando o sistema de controle de versões chamado Git.
-- Postman: é uma ferramenta que dá suporte à documentação das requisições feitas pela API.
-- Trello: é uma ferramenta de gerenciamento de equipes, projetos e produtos.
+- **Node**: é um ambiente de execução JavaScript que permite executar aplicações desenvolvidas com a linguagem de forma autônoma, sem depender de um navegador. 
+- **Playwright**: é uma poderosa ferramenta de automação de testes web que oferece suporte a múltiplos navegadores, incluindo Chrome, Firefox e Safari.
+- **Cypress**: é uma ferramenta projetada para simplificar o processo de criação, execução e depuração de testes.
+- **K6**: é uma ferramenta de teste de carga de código aberto e gratuita, com isso será capaz de detectar regressões de desempenho e problemas mais cedo, permitindo construir sistemas mais resilientes e aplicativos robustos.
+- **ChatGPT**: é uma ferramenta para processamento de linguagem natural treinada pela OpenAI.
+- **Copilot**: é uma ferramenta de assistência à codificação que usa Inteligência Artificial (IA) para ajudar os desenvolvedores a escrever código de forma mais rápida e eficaz
+- **GitHub**: é uma plataforma de desenvolvimento colaborativo que aloja projetos na nuvem utilizando o sistema de controle de versões chamado Git.
+- **Postman**: é uma ferramenta que dá suporte à documentação das requisições feitas pela API.
+- **Trello**: é uma ferramenta de gerenciamento de equipes, projetos e produtos.
 
 ## 📦 Instalação
 
@@ -84,7 +84,7 @@ Siga as etapas abaixo para configurar o projeto e iniciar o servidor.
 
 ## 📜 Plano de Testes
 
-Para facilitar a compreensão dos testes do projeto, acompanhe o plano de testes [aqui](plano-de-teste.md).
+Para facilitar a compreensão dos testes do projeto, acompanhe o plano de testes [aqui](docs/plano-de-teste.md).
 
 
 ## 📁 Estrutura do Diretório
