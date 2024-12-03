@@ -19,11 +19,11 @@ Esse documento apresenta o plano de teste completo da API nestjs-cinema, incluin
 ## Mapa Mental
 > O mapa a seguir representa a API como o Swagger descreve, no entanto apresenta algumas incongruências em relação aos critérios de aceitação.
 
-![mapaMental1](./assets/nestjs-cinema-errado.png)
+![mapaMental1](../assets/nestjs-cinema-errado.png)
 
 > Versão corrigida do mapa:
 
-![mapaMental2](./assets/nestjs-cinema-ok.png) 
+![mapaMental2](../assets/nestjs-cinema-ok.png) 
 
 ## Prompt
 
